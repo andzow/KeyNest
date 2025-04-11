@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Smooth scroll
     const links = document.querySelectorAll('a[href^="#"]');
+    const nav = document.querySelector('.header__burger');
+    const menu = document.querySelector('.header__nav_mobile');
     
     links.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -24,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const topOffset = 100;
           const elementPosition = targetSection.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+
+          nav.classList.remove('header__burger_active');
+          menu.classList.remove('header__nav_mobile_active');
     
           window.scrollTo({
             top: offsetPosition,
@@ -57,4 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
       alert(`Name: ${name}\nE-mail: ${email}`);
     });
-  });
+});
+
+function toggleMenu() {
+    const nav = document.querySelector('.header__burger');
+    const menu = document.querySelector('.header__nav_mobile');
+    nav.classList.toggle('header__burger_active');
+    menu.classList.toggle('header__nav_mobile_active');
+}
